@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import '../model/public_list_model.dart';
 
 class BaseWidgets extends StatelessWidget {
+
+  final List<ListViewModel> models = [
+    ListViewModel("Text", ""),
+    ListViewModel("Icon", ""),
+    ListViewModel("Image", ""),
+  ];
   
-
-
   Widget listCellBuild(BuildContext context, int index) {
+    ListViewModel model = models[index];
     return Container(
-      child: Text("$index"),
+      child: Text(model.title),
       height: 50.0,
       padding: EdgeInsets.symmetric(horizontal: 15.0),
       alignment: Alignment.centerLeft,
@@ -23,7 +29,7 @@ class BaseWidgets extends StatelessWidget {
         elevation: 0.0,
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: models.length,
         itemBuilder: listCellBuild,
       ),
     );

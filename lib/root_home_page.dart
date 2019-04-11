@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'BaseWidgets/base_widgets_list.dart';
+import 'model/public_list_model.dart';
 
 class RootHomePage extends StatefulWidget {
   
@@ -43,12 +44,23 @@ class _RootHomePageState extends State<RootHomePage> {
       ),
     ];
 
+    List<ListViewModel> base_widget_models = [
+      ListViewModel("Text", ""),
+      ListViewModel("Icon", ""),
+      ListViewModel("Image", ""),
+    ];
+
+    List<ListViewModel> container_widget_models = [
+      ListViewModel("Container", "container/container"),
+      ListViewModel("ConstrainedBox", "container/ConstrainedBox"),
+      ListViewModel("DecoratedBox", "container/DecoratedBox"),
+    ];
     views = [
-      BaseWidgets(),
-      BaseWidgets(),
-      BaseWidgets(),
-      BaseWidgets(),
-      BaseWidgets(),
+      BaseWidgets("容器", container_widget_models),
+      BaseWidgets("布局", base_widget_models),
+      BaseWidgets("基础", base_widget_models),
+      BaseWidgets("功能", base_widget_models),
+      BaseWidgets("其他", base_widget_models),
     ];
   }
 

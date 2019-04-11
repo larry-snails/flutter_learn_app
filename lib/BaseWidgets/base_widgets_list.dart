@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
 import '../model/public_list_model.dart';
+import '../View/base_cell.dart';
 
 class BaseWidgets extends StatelessWidget {
 
-  final List<ListViewModel> models = [
-    ListViewModel("Text", ""),
-    ListViewModel("Icon", ""),
-    ListViewModel("Image", ""),
-  ];
+  BaseWidgets(this.title, this.models);
+
+  final String title;
+
+  final List<ListViewModel> models;
   
   Widget listCellBuild(BuildContext context, int index) {
     ListViewModel model = models[index];
-    return Container(
-      child: Text(model.title),
-      height: 50.0,
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
-      alignment: Alignment.centerLeft,
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.grey, width: 0.5,))
-      ),
-    );
+    return RootListViewCell(EdgeInsets.symmetric(horizontal: 15.0), model);
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("基础Widget"),
+        title: Text(title),
         elevation: 0.0,
       ),
       body: ListView.builder(
